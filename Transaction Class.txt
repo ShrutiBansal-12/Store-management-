@@ -1,0 +1,18 @@
+import java.util.*;
+public class Transaction extends Inventory{
+    Scanner sc=new Scanner(System.in);
+    Transaction(){
+        super();
+    }
+    int Trans(String i,int n){
+        super.delete_amount(i,n);
+        int money=0;
+        for(int k=0;k<15;k++) {
+            if (items[k].equals(i)) {
+                break;
+            }
+            money=n*price[k];
+        }
+        return money;
+    }
+}

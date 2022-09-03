@@ -1,0 +1,28 @@
+import java.util.*;
+public class Customer_Info {
+    Scanner sc=new Scanner(System.in);
+    String name;
+    String email;
+    String address;
+    Customer_Info(){
+        name="";
+        email="";
+        address="";
+    }
+    void read_details(){
+        System.out.println("-----ENTER DETAILS-----");
+        System.out.println("Enter name");
+        name=sc.nextLine();
+        System.out.println("Enter email ID");
+        email=sc.nextLine();
+        System.out.println("Enter address");
+        address=sc.nextLine();
+    }
+    String get_name(){
+        return name;}
+    String get_email(){
+        return email;}
+    String get_address(){
+        return address;}
+
+}

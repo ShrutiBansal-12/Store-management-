@@ -1,0 +1,65 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("-----WELCOME TO THE STORE-----");
+        System.out.println("Please type 1 if you are a customer or 2 if you are a trader: ");
+        int ch1=sc.nextInt();
+        if(ch1==2){
+            Inventory i1=new Inventory();
+            System.out.println("Please type 1 if you want to add items or update the stock ");
+            int ch2=sc.nextInt();
+            if (ch2==1){
+                System.out.println("enter the item: ");
+                String i=sc.nextLine();
+                System.out.println("enter the amount: ");
+                int n=sc.nextInt();
+                i1.add_amount(i,n);}
+            else if(ch2==2){
+                System.out.println("enter the item: ");
+                String i=sc.nextLine();
+                System.out.println("enter the amount: ");
+                int n=sc.nextInt();
+                i1.update_amount(i,n);}
+            else{
+                System.out.println("invalid input");}
+        }
+        else if (ch1==1){
+            Customer_Info c=new Customer_Info();
+            c.read_details();
+            String name=c.get_name();
+            String email=c.get_email();
+            String add=c.get_address();
+            Transaction t=new Transaction();
+            System.out.println("Enter item to buy: ");
+            sc.next();
+            String buyitem=sc.nextLine();
+            System.out.println("Enter the number/amount of item to buy: ");
+            int n=sc.nextInt();
+            int mon=t.Trans(buyitem,n);
+            //System.out.println("amount to be paid: "+mon);
+
+            System.out.println("-----GENERATED BILL-----");
+            Billing b=new Billing(name,email,add,buyitem,n,mon);
+            File f= new File("bill_file.ser");
+            FileOutputStream fos=new FileOutputStream(f);
+            ObjectOutputStream dout=new ObjectOutputStream(fos);
+            dout.writeObject(b);
+            dout.close();
+            fos.close();
+            FileInputStream fis=new FileInputStream(f);
+            ObjectInputStream din=new ObjectInputStream(fis);
+            Billing b1=null;
+            b1=(Billing)din.readObject();
+            System.out.println("name of customer: "+b1.getname());
+            System.out.println("email ID of customer: "+b1.getemail());
+            System.out.println("address of customer: "+b1.getadd());
+            System.out.println("item purchased: "+b1.getbuyitem());
+            System.out.println("number of items purchased: "+b1.getn());
+            System.out.println("amount to be paid: "+b1.getmon());
+            System.out.println("-----THANK YOU FOR SHOPPING WITH US-----");
+            fis.close();
+        }
+    }
+}

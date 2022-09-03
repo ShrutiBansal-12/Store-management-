@@ -1,0 +1,44 @@
+public class Inventory{
+    Inventory(){
+        System.out.println("-----ITEMS LIST-----");
+        System.out.println("1.chips");
+        System.out.println("2.toothpaste");
+        System.out.println("3.biscuits");
+        System.out.println("4.cold drink");
+        System.out.println("5.pen");
+        System.out.println("6.pencil");
+        System.out.println("7.marker");
+        System.out.println("8.eraser");
+        System.out.println("9.chocolate");
+        System.out.println("10.bread");
+        System.out.println("11.brush");
+        System.out.println("12.milk");
+        System.out.println("13.ice cream");
+        System.out.println("14.hand sanitizer");
+        System.out.println("15.mask");
+    }
+    String[] items={"chips","toothpaste","biscuits","cold drinks","pen","pencil","marker","eraser","chocolate","bread","brush","milk","icecream","hand sanitizer","mask"};
+    int[] number={12,34,56,78,90,56,34,12,45,78,52,15,13,24,67};
+    int[] price={20,50,15,30,10,5,15,5,60,40,45,50,35,170,40};
+    public void add_amount(String item,int num) {
+        for (int j=0;j<15;j++) {
+            if (item.equals(items[j])) {
+                number[j] += num;
+            }
+        }
+        System.out.println("Number of items added.");
+    }
+    public void delete_amount(String item,int num) {
+        for (int j=0;j<15;j++) {
+            if (item.equals(items[j])) {
+                number[j] -= num;}
+        }
+    }
+    public void update_amount(String item,int num) {
+        for (int j=0;j<15;j++) {
+            if (item.equals(items[j])) {
+                number[j] = num;}
+        }
+        System.out.println("Number of items updated");
+    }
+}

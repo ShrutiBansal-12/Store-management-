@@ -1,0 +1,23 @@
+import java.io.*;
+class Billing implements java.io.Serializable{
+    private String name;
+    private String email;
+    private String add;
+    private String buyitem;
+    private int n;
+    private int mon;
+    Billing(String name,String email,String add,String buyitem,int n,int mon){
+        this.name=name;
+        this.email=email;
+        this.add=add;
+        this.buyitem=buyitem;
+        this.n=n;
+        this.mon=mon;
+    }
+    String getname(){return name;}
+    String getemail(){return email;}
+    String getadd(){return add;}
+    String getbuyitem(){return buyitem;}
+    int getn(){return n;}
+    int getmon(){return mon;}
+}
